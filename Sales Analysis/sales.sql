@@ -365,6 +365,7 @@ SELECT
     DENSE_RANK() OVER(PARTITION BY `month`, city ORDER BY total_order DESC) AS ranking
 FROM orders_by_city;
 
+-- finding orders that came in from each city during each of the month --
 WITH orders_by_city (`month`, city, product, total_order, total_sales)  AS 
 (
 	SELECT
