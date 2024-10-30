@@ -118,8 +118,8 @@ FROM
 -- Retrieve the minimum, maximum and average hours recorded in the sales table
 SELECT
 	MIN(`hour`),
-    MAX(`hour`),
-    AVG(`hour`)
+	MAX(`hour`),
+	AVG(`hour`)
 FROM 
 	sales;
 
@@ -137,8 +137,8 @@ WITH product_least_price (products, price_each) AS (
 )
 SELECT
 	*
-FROM p
-	roduct_least_price
+FROM 
+	product_least_price
 ORDER BY 
 	price_each ASC
 LIMIT 5;
@@ -189,7 +189,7 @@ WITH yearly_order (`year`, `total_order`) AS (
     FROM 
         sales
     GROUP BY 
-        `year`
+    	`year`
 )
 SELECT 
 	*
