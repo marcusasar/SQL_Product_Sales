@@ -1,12 +1,11 @@
-SELECT * FROM product_sales.sales;
-
--- Connecting to database
+-- Set the active database to 'product_sales'
 USE product_sales;
 
 -- Count the total number of records (orders) in the sales table
 SELECT 
 	COUNT(*)
-FROM sales;
+FROM 
+	sales;
 
 -- Count the total number of distinct records in the sales table
 SELECT
@@ -18,16 +17,19 @@ FROM
 		FROM sales
 	) AS total;
 
+-- Retrieve the first 10 records from the sales table
 SELECT
-	*
-FROM sales
-LIMIT 10;
+    *
+FROM 
+	sales
+LIMIT 5;
 
 -- Remove the column 'myunknowncolumn' from the sales table
 ALTER TABLE sales
 DROP COLUMN myunknowncolumn;
 
-DESC sales;
+-- Display the structure of the 'sales' table, including column names, data types, and other attributes
+DESCRIBE sales;
 
 -- Modify the data types and sizes of various columns in the sales table
 ALTER TABLE sales
@@ -53,7 +55,8 @@ RENAME COLUMN `month` TO `month`;                    -- Rename 'month' to 'month
 -- Retrieve the first 10 records from the sales table
 SELECT
     *
-FROM sales
+FROM 
+	sales
 LIMIT 10;
 
 -- Retrieve order IDs and the count of occurrences for each order,
@@ -61,16 +64,21 @@ LIMIT 10;
 SELECT
     order_id,
     COUNT(*) AS num_of_times
-FROM sales
-GROUP BY order_id
-HAVING COUNT(*) > 4;  -- Only include orders with more than 4 occurrences
+FROM 
+	sales
+GROUP BY 
+	order_id
+HAVING 
+	COUNT(*) > 4;  -- Only include orders with more than 4 occurrences
 
 -- Retrieve a list of distinct products from the sales table,
 -- ordered alphabetically in ascending order
 SELECT
     DISTINCT(product)
-FROM sales
-ORDER BY product ASC;
+FROM 
+	sales
+ORDER BY 
+	product ASC;
 
 -- Retrieve a list of distinct cities from the sales table,
 -- ordered alphabetically in ascending order
