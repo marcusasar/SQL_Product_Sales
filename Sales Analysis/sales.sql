@@ -2,10 +2,8 @@
 USE product_sales;
 
 -- Count the total number of records (orders) in the sales table
-SELECT 
-	COUNT(*)
-FROM 
-	sales;
+SELECT COUNT(*)
+FROM sales;
 
 -- Count the total number of distinct records in the sales table
 SELECT
@@ -18,11 +16,9 @@ FROM
 	) AS total;
 
 -- Retrieve the first 10 records from the sales table
-SELECT
-    *
-FROM 
-	sales
-LIMIT 5;
+SELECT *
+FROM sales
+LIMIT 10;
 
 -- Remove the column 'myunknowncolumn' from the sales table
 ALTER TABLE sales
@@ -465,8 +461,8 @@ WITH orders_by_city (`month`, city, product, total_order, total_sales)  AS
         SUM(sales)
 	FROM
 		sales
-        GROUP BY
-				`months`, city, product
+    GROUP BY
+			`months`, city, product
 ),
 ranking AS
 (
@@ -480,8 +476,8 @@ ranking AS
 -- Select only the top-ranked product(s) for each city and month based on total sales
 SELECT
 	*
-FROM r
-	anking
+FROM 
+	ranking
 WHERE 
 	ranks <= 1;
 
