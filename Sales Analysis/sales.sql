@@ -17,7 +17,8 @@ FROM
 
 -- Retrieve the first 10 records from the sales table
 SELECT *
-FROM sales
+FROM 
+	sales
 LIMIT 10;
 
 -- Remove the column 'myunknowncolumn' from the sales table
@@ -169,7 +170,8 @@ WITH product_quantity_ordered(product, total_quantity) AS
 		SUM(quantity_ordered)
 	FROM 
 		sales
-	GROUP BY product
+	GROUP BY 
+		product
 )
 SELECT
 	*
@@ -189,7 +191,8 @@ WITH yearly_order (`year`, `total_order`) AS (
     GROUP BY 
         `year`
 )
-SELECT *
+SELECT 
+	*
 FROM 
 	yearly_order;
 
@@ -282,7 +285,8 @@ WITH date_order_running (`date`, `total_order`) AS (
 		COUNT(*)
 	FROM 
 		sales
-	GROUP BY DATE(order_date)
+	GROUP BY 
+		DATE(order_date)
 )
 -- Select all dates and their total orders, adding a running total of orders 
 -- ordered by date in ascending order
