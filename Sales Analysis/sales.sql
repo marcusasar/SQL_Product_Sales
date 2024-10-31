@@ -426,8 +426,8 @@ CALL product_sales("2020");
 SELECT
 	YEAR(order_date) AS `year`,
 	city,
-    COUNT(*) AS total_order,
-    SUM(sales) AS total_sales
+	COUNT(*) AS total_order,
+	SUM(sales) AS total_sales
 FROM 
 	sales
 GROUP BY 
@@ -443,9 +443,9 @@ WITH orders_by_city (`month`, city, total_order, total_sales)  AS
 (
 	SELECT
 		MONTH(order_date) AS `months`,
-        city,
-        COUNT(*),
-        SUM(sales)
+    	city,
+    	COUNT(*),
+    	SUM(sales)
 	FROM 
 		sales
     GROUP BY 
@@ -454,7 +454,7 @@ WITH orders_by_city (`month`, city, total_order, total_sales)  AS
 -- Select all data from the CTE and add a ranking for each city based on total orders within each month
 SELECT
 	*,
-    DENSE_RANK() OVER(PARTITION BY `month`, city ORDER BY total_order DESC) AS ranking
+	DENSE_RANK() OVER(PARTITION BY `month`, city ORDER BY total_order DESC) AS ranking
 FROM 
 	orders_by_city;
 
@@ -464,10 +464,10 @@ WITH orders_by_city (`month`, city, product, total_order, total_sales)  AS
 (
 	SELECT
 		MONTH(order_date) AS `months`,
-        city,
-        product,
-        COUNT(*),
-        SUM(sales)
+		city,
+    	product,
+    	COUNT(*),
+    	SUM(sales)
 	FROM
 		sales
     GROUP BY
