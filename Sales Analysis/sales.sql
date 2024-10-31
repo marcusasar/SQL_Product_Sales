@@ -2,8 +2,10 @@
 USE product_sales;
 
 -- Count the total number of records (orders) in the sales table
-SELECT COUNT(*)
-FROM sales;
+SELECT 
+	COUNT(*)
+FROM 
+	sales;
 
 -- Count the total number of distinct records in the sales table
 SELECT
@@ -12,11 +14,13 @@ FROM
 	(
 		SELECT
 			DISTINCT *
-		FROM sales
+		FROM 
+			sales
 	) AS total;
 
 -- Retrieve the first 10 records from the sales table
-SELECT *
+SELECT 
+	*
 FROM 
 	sales
 LIMIT 10;
@@ -59,8 +63,8 @@ LIMIT 10;
 -- Retrieve order IDs and the count of occurrences for each order,
 -- filtering to include only those orders that appear more than 4 times
 SELECT
-    order_id,
-    COUNT(*) AS num_of_times
+	order_id,
+	COUNT(*) AS num_of_times
 FROM 
 	sales
 GROUP BY 
@@ -71,7 +75,7 @@ HAVING
 -- Retrieve a list of distinct products from the sales table,
 -- ordered alphabetically in ascending order
 SELECT
-    DISTINCT(product)
+	DISTINCT(product)
 FROM 
 	sales
 ORDER BY 
@@ -80,23 +84,23 @@ ORDER BY
 -- Retrieve a list of distinct cities from the sales table,
 -- ordered alphabetically in ascending order
 SELECT 
-    DISTINCT(city) 
+	DISTINCT(city) 
 FROM 
-    sales 
+	sales 
 ORDER BY 
-    city ASC;
+	city ASC;
 
 -- Retrieve the minimum and maximum price of items sold from the sales table
 SELECT
 	MIN(price_each) AS minimum_price,
-    MAX(price_each) AS maximum_price
+	MAX(price_each) AS maximum_price
 FROM 
 	sales;
 
 -- Retrieve the earliest and latest order dates from the sales table
 SELECT
 	MIN(order_date),
-    MAX(order_date)
+	MAX(order_date)
 FROM 
 	sales;
 
@@ -104,14 +108,14 @@ FROM
 -- Retrieve the names of the earliest and latest months in which orders were placed
 SELECT
 	MIN(MONTHNAME(order_date)),
-    MAX(MONTHNAME(order_date))
+	MAX(MONTHNAME(order_date))
 FROM 
 	sales;
 
 -- Retrieve the earliest and latest months recorded in the sales table
 SELECT
 	MIN(`month`),
-    MAX(`month`)
+	MAX(`month`)
 FROM 
 	sales;
 
@@ -127,7 +131,7 @@ FROM
 
 
 -- CTE to retrieve distinct products and their prices,
--- then select the 5 products with the lowest prices the sales table
+-- then select the 5 products with the lowest prices from the sales table
 WITH product_least_price (products, price_each) AS (
 	SELECT
 		DISTINCT (product) AS product,
@@ -148,7 +152,7 @@ LIMIT 5;
 -- Top 5 --
 WITH product_highest_price (products, price_each) AS (
 	SELECT
-		DISTINCT (product) AS product,
+		DISTINCT (product)
 		price_each
 	FROM 
 		sales
@@ -251,7 +255,8 @@ product_ranking AS (
 		yearly_month_order
 )
 -- Select the top 2 products per month for each year based on total orders
-SELECT * 
+SELECT 
+	* 
 FROM 
 	product_ranking
 WHERE 
